@@ -56,6 +56,15 @@ The `pokemon_moves` collection is necessary to establish a **many-to-many** rela
 
 **Instructions**:
 - Create the `trainers` collection with the appropriate structure.
+```json
+  {
+  "_id": ObjectId(),
+  "trainer_id": 1,
+  "name": "Ash",
+  "team": [ObjectId("pokemon_id_1"), ObjectId("pokemon_id_2"), ObjectId("pokemon_id_3"), ObjectId("pokemon_id_4"), ObjectId("pokemon_id_5"), ObjectId("pokemon_id_6")]
+}
+```
+  
 - Add at least one complete team of 6 Pokémon for a trainer.
 
 
@@ -81,70 +90,15 @@ The `pokemon_moves` collection is necessary to establish a **many-to-many** rela
 
 10. **Group Pokémon by Number of Evolutions** Group Pokémon by the number of evolutions they have (0, 1, or more evolutions).
 
+11. **Find between the `pokemons` and `abilities` collections to identify Pokémon that share at least one common ability.**
 
-## Exercise 11: Find Pokémon with Common Abilities
+12. **Average Stats by Type** : Calculate the average base stats (HP, attack, defense, etc.) for each Pokémon type.
 
-**Objective**: Find Pokémon that share the same abilities.
 
-**Instructions**:
-- Perform a **lookup** between the `pokemons` and `abilities` collections to identify Pokémon that share at least one common ability.
-- Display the name of the Pokémon and the ability they share.
+## Bonus
 
----
+1.1: Find the Most Common Type
 
-## Exercise 12: Average Stats by Type
+1.2: Find Pokémon that have more than two evolutions
 
-**Objective**: Calculate the average base stats (HP, attack, defense, etc.) for each Pokémon type.
 
-**Instructions**:
-- Perform a **lookup** between `pokemons` and `types` to get the type of each Pokémon.
-- Use **group by** to calculate the average base stats by type.
-
----
-
-## Exercise 13: Pokémon with More Than 3 Learned Moves
-
-**Objective**: Find the Pokémon that can learn more than 3 moves.
-
-**Instructions**:
-- Use a **lookup** between the `pokemon_moves` and `pokemons` collections.
-- Use an **aggregation** to count how many moves each Pokémon can learn and filter those with more than 3.
-
----
-
-## Exercise 14: Search for Trainers with Full Teams
-
-**Objective**: Query the trainers who have a full team of 6 Pokémon.
-
-**Instructions**:
-- Filter the documents in the `trainers` collection where the size of the `team` field is equal to 6.
-
----
-
-## Exercise 15: Find the Most Common Type
-
-**Objective**: Find the most common Pokémon type in the database.
-
-**Instructions**:
-- Use a **lookup** to get the types of the Pokémon.
-- Perform an **aggregation** to count how many Pokémon have each type and sort the result to get the most common one.
-
----
-
-## Exercise 16: Trainers with Legendary Pokémon Teams
-
-**Objective**: Find trainers that have at least one legendary Pokémon on their team.
-
-**Instructions**:
-- Use a **lookup** between `trainers` and `pokemons` to find trainers that have at least one legendary Pokémon on their team.
-
----
-
-## Exercise 17: Pokémon with More Than 2 Evolutions
-
-**Objective**: Find Pokémon that have more than two evolutions.
-
-**Instructions**:
-- Use an **aggregation** to count the evolutions for each Pokémon and filter those with more than two.
-
----
