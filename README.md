@@ -42,7 +42,10 @@ This set of exercises is designed to help you learn how to work with **MongoDB**
 ```
   
 - Ensure that at least one of your Pokémon has an evolution (it can be a record in the `evolution` field).
-# con ADD DATA. Pokemon sin Evolution
+
+```json
+// Ejercicio 2
+// Pokemon sin evolution
 {
   "pokemon_id": 23,
   "name": "Antonio",
@@ -78,6 +81,7 @@ This set of exercises is designed to help you learn how to work with **MongoDB**
     "other_requirements": null
   }
 }
+```
 ## Exercise 3: Create the `pokemon_moves` Collection
 
 The `pokemon_moves` collection is necessary to establish a **many-to-many** relationship between Pokémon and the moves they can learn. Each Pokémon can learn several moves, and each move can be learned by multiple Pokémon.
@@ -86,7 +90,9 @@ The `pokemon_moves` collection is necessary to establish a **many-to-many** rela
 - Create the `pokemon_moves` collection with the appropriate structure.
 - Add some moves to at least 6 Pokémon using this collection.
 
-// Crear la colección (se crea automáticamente al insertar el primer documento)
+```json
+//Ejercicio 3
+// Crear la colección 'pokemon_moves'
 db.pokemon_moves.insertMany([
   // Bulbasaur
   {
@@ -175,7 +181,7 @@ db.pokemon_moves.insertMany([
     "learn_method": "tm"
   }
 ]);
-
+```
 ## Exercise 4: Add the `trainers` Collection
 
 **Instructions**:
@@ -191,7 +197,8 @@ db.pokemon_moves.insertMany([
   
 - Add at least one complete team of 6 Pokémon for a trainer.
 
-// codigo
+```json
+// Ejercicio 4: creamos la coleccion 'trainers' con 3 documentos
 db.trainers.insertMany([
   {
   "_id": ObjectId(),
@@ -212,11 +219,12 @@ db.trainers.insertMany([
   "team": [ObjectId("6716366616572cf5a1b139d7"), ObjectId("6716366616572cf5a1b139d8"), ObjectId("6716366616572cf5a1b139d9"), ObjectId("6716366616572cf5a1b139d9"), ObjectId("6847f45c512e5c7aac75ebb9"), ObjectId("6847f65f512e5c7aac75ebc1")]
 }
 ]);
-
+```
 ## Exercise 5:  Queries
 
 1. **Query a Pokémon by name**: Return all the information of a specific Pokémon by its name.
-
+```json
+// Query 1
 db['pokemons'].find({'name':'Rattata'})
 {
   _id: ObjectId('6716366616572cf5a1b139d7'),
@@ -237,10 +245,11 @@ db['pokemons'].find({'name':'Rattata'})
   evolves_to: 20,
   evolution_level: 20
 }
-   
+```   
 2. **Get Pokémon of a specific type**: Use a **lookup** to find Pokémon that have a specific type.
 
-
+```json
+// Query 2
 db.types.aggregate([
   {
     $match:
@@ -269,7 +278,8 @@ db.types.aggregate([
       }
   }
 ]
-   
+```
+  
 3. **Get all the moves a Pokémon can learn**: Write a query that shows all the moves a Pokémon can learn, including the level at which it learns them.
 
 
